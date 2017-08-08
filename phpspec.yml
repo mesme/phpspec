@@ -1,0 +1,5 @@
+suites:
+   campus_wonders_suite:
+       namespace:  CampusWonders
+       psr4_prefix:  CampusWonders
+       src_path:  src
