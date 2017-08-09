@@ -13,24 +13,6 @@ abstract class AbstractItem
 {
     public function calculatePrice($quantity, $price, $offer)
     {
-        if($quantity === 1){
-            return $price;
-        }
-
-        if(empty($offer)){
-            return $price * $quantity;
-        }
-
-        if($quantity < $offer['quantity']){
-            return $price * $quantity;
-        }
-
-        if($quantity == $offer['quantity']){
-            return $offer['price'];
-        }
-
-        if($quantity > $offer['quantity']){
-            return $offer['price'] + $this->calculatePrice($quantity - $offer['quantity'], $price, $offer);
-        }
+        return (int) floor($quantity/$offer['quantity']) * $offer['price'] + ($quantity % $offer['quantity']) * $price;
     }
 }

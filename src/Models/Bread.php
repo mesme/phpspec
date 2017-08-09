@@ -13,7 +13,10 @@ class Bread extends AbstractItem implements ItemInterface
 {
     private $price = 20;
 
-    private $offer = [];
+    private $offer = [
+        'quantity' => 1,
+        'price' => 20
+    ];
 
     public function getName()
     {

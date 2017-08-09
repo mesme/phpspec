@@ -13,7 +13,10 @@ class Banana extends AbstractItem implements ItemInterface
 {
     private $price = 15;
 
-    private $offer = [];
+    private $offer = [
+        'quantity' => 1,
+        'price' => 15
+    ];
 
     public function getName()
     {
