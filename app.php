@@ -30,19 +30,8 @@ if(!isset($_SESSION['bees'])){
     $bees = unserialize($_SESSION['bees']);
 }
 
-
-if(isset($_GET['hit'])){
-    echo "here";
-    $hit = $bees->hit();
-    if($hit !== false){
-        echo $hit;
-    } else {
-        echo "Game over";
-    }
-    echo "\r\n";
-}
-
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -84,6 +73,28 @@ if(isset($_GET['hit'])){
 <div class="container-fluid">
   <div class="row content">
 
+      <table class="table">
+          <thead>
+          <tr>
+              <th>Firstname</th>
+              <th>Lastname</th>
+              <th>Email</th>
+          </tr>
+          </thead>
+      </table>
+
+     <?php if(isset($_GET['hit'])){
+
+      $hit = $bees->hit();
+      if($hit !== false){
+      echo $hit;
+      } else {
+      echo "Game over";
+      }
+      echo "\r\n";
+      }
+
+      ?>
     </div>
 </div>
 
