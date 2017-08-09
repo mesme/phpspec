@@ -54,6 +54,23 @@ echo "\r\n";
 /*
  * row 4
  */
-
+$checkout = new Checkout();
+$checkout->scan(new Strawberry());
+$checkout->scan(new Strawberry());
+$checkout->scan(new Strawberry());
+$checkout->scan(new Strawberry());
+$checkout->scan(new Strawberry());
+$checkout->scan(new Strawberry());
+$checkout->scan(new Biscuit());
+$checkout->scan(new Biscuit());
+$checkout->scan(new Biscuit());
+$checkout->scan(new Biscuit());
+$checkout->scan(new Biscuit());
+$checkout->scan(new Bread());
+$checkout->scan(new Bread());
+$checkout->scan(new Bread());
+$checkout->scan(new Banana());
+$checkout->scan(new Banana());
+echo $checkout->checkout();
 echo "\r\n";
 

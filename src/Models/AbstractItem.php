@@ -30,7 +30,7 @@ abstract class AbstractItem
         }
 
         if($quantity > $offer['quantity']){
-            return $offer['price'] + $this->calculatePrice($quantity - $offer['quantity']);
+            return $offer['price'] + $this->calculatePrice($quantity - $offer['quantity'], $price, $offer);
         }
     }
 }
