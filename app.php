@@ -6,6 +6,12 @@ use CampusWonders\Bee\Queen;
 use CampusWonders\Bee\Worker;
 use CampusWonders\Bee\Drone;
 
+if(isset($_GET['reset'])){
+    session_destroy();
+    header('Location: http://localhost:8000/app.php');
+    exit;
+}
+
 if(!isset($_SESSION['bees'])){
     $bees = new BeeCollection([
         new Queen(100, 8),
@@ -29,6 +35,8 @@ if(!isset($_SESSION['bees'])){
 } else {
     $bees = unserialize($_SESSION['bees']);
 }
+
+
 
 ?>
 
@@ -73,28 +81,34 @@ if(!isset($_SESSION['bees'])){
 <div class="container-fluid">
   <div class="row content">
 
+      <?php if(isset($_GET['hit'])){
+          $hit = $bees->hit();
+              if($hit === false){
+                echo 'Game over <a href="app.php?reset=1">Start again</a>';
+                  exit;
+              }
+              $_SESSION['bees'] = serialize($bees);
+          }
+      ?>
       <table class="table">
           <thead>
           <tr>
-              <th>Firstname</th>
-              <th>Lastname</th>
-              <th>Email</th>
+              <th>Number</th>
+              <th>Type</th>
+              <th>Left</th>
+              <th>Status</th>
           </tr>
           </thead>
+          <?php $i = 1; foreach($bees->getBees() as $bee) { ?>
+              <tr>
+                  <td><?php echo $i;?></td>
+                  <td><?php echo $bee->getName();?></td>
+                  <td><?php echo $bee->getPoints();?></td>
+                  <td><?php echo $bee->isStatus();?></td>
+              </tr>
+              <?php $i++; } ?>
       </table>
-
-     <?php if(isset($_GET['hit'])){
-
-      $hit = $bees->hit();
-      if($hit !== false){
-      echo $hit;
-      } else {
-      echo "Game over";
-      }
-      echo "\r\n";
-      }
-
-      ?>
+      <p class="text-center"><a href="app.php?hit=1">Hit</a></p>
     </div>
 </div>
 

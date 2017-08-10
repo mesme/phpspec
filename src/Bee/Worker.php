@@ -11,5 +11,7 @@ namespace CampusWonders\Bee;
 
 class Worker extends AbstractBee
 {
-    
+    public function getName(){
+        return 'Drone';
+    }
 }

@@ -11,6 +11,7 @@ namespace CampusWonders\Bee;
 
 class Queen extends AbstractBee implements BeeInterface
 {
-
-
+    public function getName(){
+        return 'Queen';
+    }
 }
